@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SelfAttention | House Price Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  </head>
+  <body>
+    <div class="background-orb orb-1"></div>
+    <div class="background-orb orb-2"></div>
+    <div class="background-grid"></div>
+
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">SA</div>
+        <div>
+          <div class="brand-name">selfattention.in</div>
+          <div class="brand-subtitle">Interns' ML Project</div>
+        </div>
+      </div>
+      <span class="pill">House Price Intelligence</span>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Project by interns at SelfAttention</p>
+          <h1>Smart House Price Predictor</h1>
+          <p class="subtitle">
+            A machine learning model trained to estimate property value using key housing features,
+            deployed in-browser with ONNX and optimized for GitHub Pages.
+          </p>
+        </div>
+
+        <div class="stat-card float-card">
+          <div class="stat-label">Model</div>
+          <div class="stat-value">ONNX</div>
+          <div class="stat-meta">Browser Ready</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <form id="priceForm">
+          <div class="form-header">
+            <h2>Enter property details</h2>
+            <span>Live prediction</span>
+          </div>
+
+          <div class="grid">
+            <label>
+              Square Feet
+              <input id="sqft" type="number" value="2200" step="10" min="500" />
+            </label>
+
+            <label>
+              Bedrooms
+              <input id="bedrooms" type="number" value="3" min="1" max="10" />
+            </label>
+
+            <label>
+              Bathrooms
+              <input id="bathrooms" type="number" value="2" min="1" max="8" />
+            </label>
+
+            <label>
+              Age (years)
+              <input id="age" type="number" value="15" min="0" max="100" />
+            </label>
+
+            <label>
+              Garage spaces
+              <input id="garage_spaces" type="number" value="2" min="0" max="5" />
+            </label>
+
+            <label>
+              Lot size
+              <input id="lot_size" type="number" value="5000" step="50" min="1000" />
+            </label>
+
+            <label class="wide-field">
+              Neighborhood score
+              <input id="neighborhood_score" type="number" value="0.82" step="0.01" min="0" max="1" />
+            </label>
+          </div>
+
+          <button type="submit">Predict price</button>
+        </form>
+
+        <div class="result-box">
+          <div id="status" class="status">Loading model...</div>
+          <div id="result" class="result">Estimated price: --</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
