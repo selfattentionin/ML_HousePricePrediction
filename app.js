@@ -24,7 +24,13 @@ async function predictPrice(inputValues) {
 
   const tensor = new ort.Tensor('float32', new Float32Array(inputValues), [1, inputValues.length]);
   const outputs = await session.run({ input: tensor });
-  const price = outputs.output.data[0];
+
+  const outputName = Object.keys(outputs)[0];
+  if (!outputName) {
+    throw new Error('ONNX model returned no output tensor');
+  }
+
+  const price = outputs[outputName].data[0];
   return price;
 }
 
